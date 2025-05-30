@@ -1,14 +1,34 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React from 'react';
+import MainAppLayout from '../components/layout/MainAppLayout';
+import PostFeed from '../components/Feed/PostFeed';
+import StoriesSection from '../components/Stories/StoriesSection';
+import SuggestedGroups from '../components/Groups/SuggestedGroups';
 
-const Index = () => {
+/**
+ * RightSidebarContent component bundles the content for the right sidebar.
+ * It includes StoriesSection and SuggestedGroups, arranged vertically.
+ */
+const RightSidebarContent: React.FC = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="flex flex-col space-y-4">
+      <StoriesSection />
+      <SuggestedGroups />
+      {/* Placeholder for other right sidebar elements like Contacts/Chat could be added here if needed */}
     </div>
   );
 };
 
-export default Index;
+/**
+ * HomeFeedPage is the main page component for the social media home feed.
+ * It utilizes MainAppLayout to structure the page and populates the main content area
+ * with PostFeed and the right sidebar with StoriesSection and SuggestedGroups.
+ */
+const HomeFeedPage: React.FC = () => {
+  return (
+    <MainAppLayout rightSidebarContent={<RightSidebarContent />}>
+      <PostFeed />
+    </MainAppLayout>
+  );
+};
+
+export default HomeFeedPage;
